@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-export interface HeadingState {
+export interface HeaderStates {
   	title : string,
 	shortDes : string,
 	category : string,
 	imgUrl : string,
 }
 
-const initialState: HeadingState = {
+const initialState: HeaderStates = {
   	title: "",
 	shortDes : "",
 	category : "",
 	imgUrl : "",
 }
 
-export const headingSlice = createSlice({
-  name: 'headings',
+export const HeaderSlice = createSlice({
+  name: 'Header Contents',
   initialState,
   reducers: {
 		updateTitle : (state, action : PayloadAction<string>) => {
@@ -35,5 +35,5 @@ export const headingSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateTitle, updateDes, updateCat, updateImg } = headingSlice.actions
-export default headingSlice.reducer
+export const { updateTitle, updateDes, updateCat, updateImg } = HeaderSlice.actions
+export default HeaderSlice.reducer

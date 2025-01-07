@@ -14,17 +14,18 @@ export default function SaveLoader() {
 	const [snackOpen, setSnackopen] = useState<boolean>(false);
   const [snackSuccess, setSnacksuccess] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
-  const headings = useAppSelector(state => state.heading);
-  
+  const headings = useAppSelector(state => state.fixedContent);
+  const bodies = useAppSelector(state => state.bodyContent);
 
   const handleSave = () => {
     console.log(headings);
+    console.log(bodies);
     // handleSnackopen();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       handleSnackopen();
-      setSnacksuccess(false);
+      setSnacksuccess(true);
     }, 5000);
   };
 

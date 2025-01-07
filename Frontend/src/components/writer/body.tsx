@@ -3,8 +3,11 @@ import OpenIconSpeedDial from "./addButton";
 import Texteditor from "./textEditor";
 import Imageeditor from "./imageEditor";
 import Codeeditor from "./codeEditor";
+import { addContent } from "../../reduxStore/slices/blogwriter/body";
+import { useDispatch } from "react-redux";
 
 interface Element{
+	id : number;
 	type : 'text' | 'image' | 'code';
 	content : string;
 };
@@ -12,13 +15,16 @@ interface Element{
 export default function Bodywriter(){
 
 	const [elements, setElements] = useState<Element[]>([]);
+	const dispatch = useDispatch();
 	const handleAdd = (type : any)=>{
 		const el : Element = {
+			id : elements.length,
 			type : type,
 			content : " "
 		};
 		const els = [...elements, el];
 		setElements(els);
+		dispatch(addContent(el));
 	}
 
   return(
@@ -27,11 +33,11 @@ export default function Bodywriter(){
 			{
 				elements.map((element, id) => {
 					if(element.type == 'text'){
-						return <Texteditor/>
+						return <Texteditor id={id}/>
 					} else if(element.type == 'image'){
-						return <Imageeditor/>
+						return <Imageeditor id={id}/>
 					} else{
-						return <Codeeditor/>
+						return <Codeeditor id={id}/>
 					}
 				})
 			}

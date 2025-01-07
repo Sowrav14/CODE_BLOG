@@ -1,10 +1,20 @@
 
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateContent } from '../../reduxStore/slices/blogwriter/body';
 
+interface prop{
+	id : number
+}
+interface Element{
+	id : number;
+	type : 'text' | 'image' | 'code';
+	content : string;
+};
 
-
-export default function Imageeditor() {
+export default function Imageeditor({id} : prop) {
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
   const [image, setImage] = useState(
     "https://www.americanexecutivecenters.com/wp-content/uploads/2016/06/Blog.jpg"
   );
@@ -32,6 +42,12 @@ export default function Imageeditor() {
                 // console.log(file[0]);
                 // console.log(URL.createObjectURL(file[0]));
                 setImage(URL.createObjectURL(file[0]));
+                const newValue : Element = {
+                  id : id,
+                  type : 'image',
+                  content : URL.createObjectURL(file[0])
+                }
+                dispatch(updateContent(newValue))
               }
             }}
           />

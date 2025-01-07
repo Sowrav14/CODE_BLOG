@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import headingSlice from './slices/blogwriter/category'
+import HeaderSlice from './slices/blogwriter/header'
+import bodySlice from './slices/blogwriter/body'
 
 export const store = configureStore({
   reducer: {
-    heading : headingSlice,
+    fixedContent : HeaderSlice,
+    bodyContent : bodySlice
   },
 })
 

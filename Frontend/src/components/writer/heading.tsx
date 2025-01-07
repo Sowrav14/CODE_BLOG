@@ -3,7 +3,12 @@ import { useRef, useState } from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useDispatch } from 'react-redux';
-import { updateCat, updateDes, updateImg, updateTitle } from '../../reduxStore/slices/blogwriter/category';
+import { 
+  updateCat, 
+  updateDes, 
+  updateImg, 
+  updateTitle 
+} from '../../reduxStore/slices/blogwriter/header';
 
 const Categories: string[] = ["Cp", "ml", "dp", "gp", "graph"];
 
@@ -41,8 +46,7 @@ export default function Heading() {
                 // console.log(file[0]);
                 // console.log(URL.createObjectURL(file[0]));
                 setImage(URL.createObjectURL(file[0]));
-                dispatch(updateImg(image));
-                alert(image);
+                dispatch(updateImg(URL.createObjectURL(file[0])));
               }
             }}
           />

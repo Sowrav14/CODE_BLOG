@@ -2,6 +2,8 @@ import Editor from '@monaco-editor/react';
 import { useState } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useDispatch } from 'react-redux';
+import { updateContent } from '../../reduxStore/slices/blogwriter/body';
 
 interface Language{
 	name : string;
@@ -34,10 +36,19 @@ const Langs : Language[] = [
 
 const Iter : number[] = [0, 1, 2, 3];
 
+interface prop{
+	id : number
+}
+interface Element{
+	id : number;
+	type : 'text' | 'image' | 'code';
+	content : string;
+};
 
-export default function Codeeditor() {
+export default function Codeeditor({id} : prop) {
 	const [contents, setContents] = useState<string>("");
 	const [lang, setLang] = useState<number>(0);
+	const dispatch = useDispatch();
 
   const handleLangChange = (
     event: React.MouseEvent<HTMLElement>,
@@ -47,6 +58,12 @@ export default function Codeeditor() {
   };
 	const handleChange = (value : any)=>{
 		setContents(value);
+		const newValue : Element = {
+			id : id,
+			type : 'code',
+			content : value
+		}
+		dispatch(updateContent(newValue))
 	}
 
   return (
@@ -66,13 +83,13 @@ export default function Codeeditor() {
 				}
     	</ToggleButtonGroup>
       <Editor
-		theme='vs-dark'
+				theme='vs-dark'
         height="50vh"
         defaultLanguage={Langs[lang].name}
         defaultValue={Langs[lang].value}
-		onChange={handleChange}
-		value={contents}
-		path={Langs[lang].path}
+				onChange={handleChange}
+				value={contents}
+				path={Langs[lang].path}
       />
 		</div>
   )
