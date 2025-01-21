@@ -1,3 +1,57 @@
-- Landing Page Design
-- Redux toolkit 
-- Blog Editor
+- Landing Page Design 
+- Frontend remaster
+- Backend Init
+- Database Init
+
+database
+	- Users
+		
+		- works
+			- title
+			- role
+			- address
+			- date
+		- skills
+			- name(multiple)
+		- profile
+			- name
+			- organization
+			- tag
+			- introduce yourself
+			- image URL (Cloudinary)
+		- about
+			- phone
+			- address
+			- email
+			- GitHub profile
+			- LinkedIn
+			- DOB
+			- Gender
+		- auth
+			- id
+			- username
+			- password
+		- display
+			- ratings
+			- followers
+			- blog Count
+		- bookmark
+		- favorite
+		- read
+
+	- Blogs
+		- display
+			- owner
+			- tag
+			- title
+			- short Description
+			- display Image
+			- read Count
+			- date
+			- like
+			- comment counts
+		- contents
+			- id
+			- type
+			- content
+		- comments
