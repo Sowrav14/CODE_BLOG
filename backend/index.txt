@@ -3,7 +3,7 @@
 - Background routes
 - background api's
 
-database				- done
+database				- recheck...
 	-- Users
 		
 		-- works
@@ -31,7 +31,7 @@ database				- done
 			- id
 			- username
 			- password
-			- email
+			- email/github
 		-- display	- done
 			- ratings
 			- followers
@@ -56,3 +56,6 @@ database				- done
 			- type
 			- content
 		- comments
+
+
+-start mongo = docker run -p 27017:27017 -d mongo

@@ -5,8 +5,9 @@ import mongoose from 'mongoose'
 dotenv.config()
 
 //details from the env
+const dbUrl = process.env.DB_URL;
 const dbName = process.env.DB_NAME;
-const dbString = process.env.DATABASE_URL || "mongodb://localhost:27017/CodeBlog"
+const dbString = `${dbUrl}/${dbName}`
 
 //db connection
 export const db = mongoose.connect(dbString)
